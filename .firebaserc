@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "sbv-ranking": {
+      "hosting": {
+        "ranking": [
+          "sbv-ranking"
+        ]
+      }
+    }
+  }
+}

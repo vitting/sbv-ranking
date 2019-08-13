@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "ranking",
+      "public": "dist/ranking",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
