@@ -1,0 +1,20 @@
+@import "../../../variables";
+
+.navbar-container {
+  height: $navbar-height;
+  background-color: $bg-color-navbar;
+  color: $color-text-navbar;
+  padding: 0 10px;
+  @include flex-row-spacebetween-center;
+
+  .navbar-brand {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .navbar-title {
+
+  }
+}

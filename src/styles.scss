@@ -1,5 +1,17 @@
 @import "variables";
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.app-button-outline {
+  outline: none!important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   background: $bg-color-scrollbar-track;
@@ -14,6 +26,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: $bg-color-scrollbar-thumb-hover;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

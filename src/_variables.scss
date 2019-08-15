@@ -1,66 +1,13 @@
 @import "./colors";
 
-$bg-color-body: #effefe;
-$bg-color-scrollbar-track: #f1f1f1;
-$bg-color-scrollbar-thumb: $indigo-100;
-$bg-color-scrollbar-thumb-hover: $indigo-200;
 $navbar-height: 60px;
-$content-container-vertical-margin: 20px;
-$used-vertical-area-space: $navbar-height+$content-container-vertical-margin;
-$bg-color-project: $indigo-500;
-$bg-color-project-filter: $indigo-700;
-$bg-color-task: $pink-800;
-$bg-color-subtask: $pink-500;
-$bg-color-comment: $teal-700;
-$bg-color-comment-user: $teal-700;
-$bg-color-user: $cyan-800;
-$bg-color-template: $bg-color-project;
-$bg-color-template-task: $bg-color-task;
-$bg-color-template-subtask: $bg-color-subtask;
-$bg-color-setting: $bluegray-700;
-$bg-color-log: $bluegray-600;
-$bg-color-log-filter: $bluegray-700;
-$bg-color-calendar-month-0: $cyan-900;
-$bg-color-calendar-month-1: $cyan-800;
-$bg-color-calendar-month-2: $cyan-700;
-$bg-color-calendar-month-3: $cyan-900;
-$bg-color-calendar-month-4: $pink-600;
-$bg-color-calendar-month-5: $pink-700;
-$bg-color-calendar-month-6: $pink-800;
-$bg-color-calendar-month-7: $pink-900;
-$bg-color-calendar-month-8: $teal-900;
-$bg-color-calendar-month-9: $teal-800;
-$bg-color-calendar-month-10: $teal-700;
-$bg-color-calendar-month-11: $teal-600;
-$color-highligt-month: $orange-500;
-$bg-color-message: $orange-900;
-$bg-color-message-error: $pink-a400;
-$color-text: #fff;
-$color-text-reverse: #000;
-$color-no-data-text: #444;
-$bg-color-no-data: $orange-300;
-$bg-color-indicator: rgb(5, 5, 5);
-$color-project-edit-end: $indigo-100;
-$color-task-edit-end: $pink-100;
+$color-text-navbar: #fff;
+$bg-color-navbar: $amber-900;
+$bg-color-scrollbar-track: $amber-50;
+$bg-color-scrollbar-thumb: $amber-100;
+$bg-color-scrollbar-thumb-hover: $amber-200;
 $bg-color-splash: $indigo-500;
 $bg-color-splash-spinner: #fff;
-$bg-color-user-chip-project: $indigo-300;
-$bg-color-user-chip-task: $pink-400;
-$bg-color-user-chip-subtask: $pink-700;
-$bg-color-user-chip-subtask-complete: $bg-color-user-chip-subtask;
-$bg-color-subtask-item: $pink-500;
-$bg-color-subtask-item-hover: $pink-300;
-$bg-color-subtask-item-complete: $pink-900;
-$color-month-item-border: #fff;
-
-@mixin indicator {
-  position: absolute;
-  border-radius: 50%;
-  background-color: $bg-color-indicator;
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-}
 
 @mixin flex-row-spacebetween {
   display: flex;

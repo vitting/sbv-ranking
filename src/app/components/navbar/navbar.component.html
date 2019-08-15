@@ -1,0 +1,26 @@
+<nav class="navbar-container">
+  <div class="navbar-brand">
+    <button mat-icon-button class="app-button-outline"><img src="assets/images/sbv_logo_250x250.png"
+        alt="Logo"></button>
+  </div>
+  <div class="navbar-title">
+    Rangliste
+  </div>
+  <div class="navbar-menu">
+    <button mat-icon-button class="app-button-outline" [matMenuTriggerFor]="menu" aria-label="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</nav>
+<div class="navbar-progress">
+  <mat-progress-bar *ngIf="showProgressbar" mode="indeterminate" color="warn"></mat-progress-bar>
+</div>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <div mat-menu-item [disableRipple]="true" [disabled]="true">
+    <span>Christian Nicolaisen</span>
+  </div>
+  <button mat-menu-item (click)="menuItemClick('home')" class="app-button-outline">
+    <span>Forside</span>
+  </button>
+</mat-menu>

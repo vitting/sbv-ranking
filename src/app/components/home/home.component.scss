@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: lighter;
+
+  thead {
+    th {
+      font-weight: lighter;
+    }
+  }
+
+  tbody {
+    tr {
+      border-collapse: collapse;
+      border-bottom: 1px solid rgb(221, 221, 221);
+
+      td {
+        padding: 10px;
+      }
+    }
+
+    tr:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.cell-position {
+  padding-right: 10px;
+  text-align: end;
+}

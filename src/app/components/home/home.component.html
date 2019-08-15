@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nr.</th>
+      <th>Navn</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of dataSource; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.points}}</td>
+    </tr>
+  </tbody>
+</table>
