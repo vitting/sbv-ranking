@@ -31,7 +31,6 @@ export class AuthService {
 
   async sendLoginCode() {
     const appVerifier = this.recaptchaVerifier;
-    // const num = "+4561308502";
     // const num = "+12222222222";
     const num = "+14356789874";
     try {
