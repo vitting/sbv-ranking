@@ -2,12 +2,15 @@
 
 $navbar-height: 60px;
 $color-text-navbar: #fff;
+$color-text-dimmed: #ADADAD;
 $bg-color-navbar: $amber-900;
 $bg-color-scrollbar-track: $amber-50;
 $bg-color-scrollbar-thumb: $amber-100;
 $bg-color-scrollbar-thumb-hover: $amber-200;
 $bg-color-splash: $indigo-500;
 $bg-color-splash-spinner: #fff;
+$bg-color-step: $deeppurple-500;
+$bg-color-step-text: #fff;
 
 @mixin flex-row-spacebetween {
   display: flex;

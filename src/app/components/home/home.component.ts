@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/services/navbar.service';
 
 @Component({
   selector: 'app-home',
@@ -28,9 +29,10 @@ export class HomeComponent implements OnInit {
     { position: 10, name: "Christian Nicolaisen", points: 104 }
   ];
   displayedColumns: string[] = ['position', 'name', 'points'];
-  constructor() { }
+  constructor(private navbarService: NavbarService) { }
 
   ngOnInit() {
+    this.navbarService.navbarTitle = "Ranglisten";
   }
 
 }

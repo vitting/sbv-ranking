@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="upload-btn-wrapper">
+    <div class="btn">
+      <div>
+        Tilføj
+      </div>
+      <div>
+        profilbillede
+      </div>
+      <fa-icon [inverse]="true" [icon]="['fas', 'plus']"></fa-icon>
+    </div>
+    <input type="file" (change)="uploadPhoto($event)">
+  </div>
+
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field class="form-field">
+        <input matInput placeholder="Dit navn" id="name" name="name" formControlName="name">
+        <mat-hint>Det navn der vil blive vist på ranglisten og andre spillere kan finde dig ved når kampe skal
+          registeres.
+        </mat-hint>
+      </mat-form-field>
+      <div class="gender-chooser">
+        <label id="choose-gender-label">Vælg dit køn:</label>
+        <mat-radio-group aria-labelledby="choose-gender-label" formControlName="gender">
+          <mat-radio-button value="f">Kvinde</mat-radio-button>
+          <mat-radio-button value="m">Mand</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <button mat-flat-button color="primary" type="submit"
+        [disabled]="signupForm.invalid || signupForm.untouched">Gem</button>
+    </div>
+  </form>
+</div>

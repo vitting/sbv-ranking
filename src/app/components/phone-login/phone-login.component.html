@@ -1,1 +1,35 @@
-<h1>Phone Login</h1>
+<div class="container">
+  <header>
+    <div>Velkommen til SBV Ranglisten</div>
+    <div>For at komme i gang skal du logge ind med dit mobil nummer.</div>
+    <div>Du vil efterfølgende modtage en sms med en godkendelses kode.</div>
+  </header>
+  <div class="step" [ngClass]="{'step-disabled': activeStep !== 1}">1</div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form1">
+    <div id="recaptcha-container"></div>
+    <div class="form-fields">
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput placeholder="Dit mobil nummer" type="number" id="phonenumber" name="phonenumber"
+            formControlName="phonenumber">
+        </mat-form-field>
+      </div>
+      <button class="button-send" mat-flat-button color="primary" type="submit"
+        [disabled]="loginForm.invalid || loginForm.untouched">Send</button>
+    </div>
+  </form>
+  <div class="step" [ngClass]="{'step-disabled': activeStep !== 2}">2</div>
+  <form [formGroup]="verifyForm" (ngSubmit)="onVerify()">
+    <div class="form-fields">
+      <div class="form-field">
+        <mat-form-field>
+          <input matInput placeholder="Din godkendelses kode" type="number" id="verifycode" name="verifycode"
+            formControlName="verifycode">
+        </mat-form-field>
+      </div>
+      <button class="button-send" mat-flat-button color="primary" type="submit"
+        [disabled]="verifyForm.invalid || verifyForm.untouched">Godkend</button>
+    </div>
+  </form>
+</div>
+<button type="button" (click)="logout()">Logud</button>

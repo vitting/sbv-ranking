@@ -1,0 +1,69 @@
+@import "../../../variables";
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  header {
+    max-width: 400px;
+    color: $color-text-dimmed;
+    font-weight: lighter;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+
+    div:first-child {
+      font-size: 1.2rem;
+      padding: 10px 0;
+    }
+  }
+
+  .form1 {
+    margin-bottom: 40px;
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-field {
+      width: 180 px;
+    }
+
+    .button-send {
+      margin-left: 10px;
+    }
+  }
+
+  .continue-container {
+    margin-top: 20px;
+  }
+
+  .step {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: $bg-color-step;
+    color: $bg-color-step-text;
+    margin-bottom: 10px;
+
+    &.step-disabled {
+      background-color: lightgray;
+    }
+
+    &.final-step {
+      margin-top: 50px;
+    }
+  }
+}
+

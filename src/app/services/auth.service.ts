@@ -15,7 +15,6 @@ export class AuthService {
         console.log(user);
       } else {
         console.log("NO USER");
-        this.initPhoneLogin();
       }
     });
   }
@@ -29,29 +28,24 @@ export class AuthService {
     }
   }
 
-  async sendLoginCode() {
+  async sendLoginCode(mobilenumber: number) {
     const appVerifier = this.recaptchaVerifier;
-    // const num = "+12222222222";
-    const num = "+14356789874";
+    const num = "+45" + mobilenumber.toString();
     try {
       this.confirmResult = await this.fAuth.auth.signInWithPhoneNumber(num, appVerifier);
-      // this.confirmResult = await firebase.auth().signInWithPhoneNumber(num, appVerifier);
-      await this.verifyCode();
+      return Promise.resolve(true);
     } catch (error) {
       console.log(error);
+      return Promise.reject(error);
     }
   }
 
-  private async verifyCode() {
+  async verifyCode(verificationCode: string): Promise<firebase.auth.UserCredential> {
     if (this.confirmResult) {
-      const verification = prompt('Enter verification code');
-      try {
-        const user = await this.confirmResult.confirm(verification);
-        console.log(user);
-      } catch (error) {
-        console.log(error);
-      }
+      return this.confirmResult.confirm(verificationCode);
     }
+
+    return Promise.resolve(null);
   }
 
   async logout() {
