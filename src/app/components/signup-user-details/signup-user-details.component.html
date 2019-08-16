@@ -1,17 +1,14 @@
 <div class="container">
-  <div class="upload-btn-wrapper">
+  <div class="upload-btn-wrapper" (click)="profileImageClicked()">
     <div class="btn">
-      <div>
-        Tilføj
+      <div [ngClass]="{'no-profile-image': !showProfileImage, 'profile-image': showProfileImage}">
+        <img [src]="profileImage" />
       </div>
-      <div>
-        profilbillede
-      </div>
-      <fa-icon [inverse]="true" [icon]="['fas', 'plus']"></fa-icon>
     </div>
-    <input type="file" (change)="uploadPhoto($event)">
+    <input type="file" (change)="choosePhoto($event)" *ngIf="!showProfileImage">
   </div>
-
+  <div class="profile-image-text" *ngIf="!showProfileImage">Klik for at tilføje et profilbillede</div>
+  <div class="profile-image-text" *ngIf="showProfileImage">Klik for at fjerne profilbilledet</div>
   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="form-fields">
       <mat-form-field class="form-field">
@@ -27,8 +24,25 @@
           <mat-radio-button value="m">Mand</mat-radio-button>
         </mat-radio-group>
       </div>
-      <button mat-flat-button color="primary" type="submit"
-        [disabled]="signupForm.invalid || signupForm.untouched">Gem</button>
+      <div class="signup-form-button">
+        <button mat-flat-button color="primary" type="submit"
+          [disabled]="signupForm.invalid || signupForm.untouched">Gem</button>
+      </div>
     </div>
   </form>
+</div>
+
+<div class="image-cropper-container" [@cropperShow]="cropperShowState">
+  <div class="image-cropper-buttons">
+    <div>
+      <button mat-flat-button color="accent" (click)="cropAction('cancel')">Fortryd</button>
+    </div>
+    <div>
+      <img class="image-cropper-preview" [src]="croppedImage" />
+    </div>
+    <div><button mat-flat-button color="primary" (click)="cropAction('save')">Afslut</button></div>
+  </div>
+  <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+    [resizeToWidth]="128" [outputType]="'base64'" format="png" (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
 </div>

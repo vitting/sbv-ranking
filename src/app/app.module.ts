@@ -11,6 +11,7 @@ import { PhoneLoginComponent } from './components/phone-login/phone-login.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,6 +20,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faTimesCircle,
@@ -79,7 +81,9 @@ import { SignupUserDetailsComponent } from './components/signup-user-details/sig
     AngularFireModule.initializeApp(firebaseConfig.firebase, 'sbv-ranking'),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
+    ImageCropperModule,
     MomentModule,
     FontAwesomeModule,
     MatIconModule,

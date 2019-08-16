@@ -34,5 +34,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.navbarService.navbarTitle = "Ranglisten";
   }
+  addMatchClicked() {
 
+  }
+
+  rowClicked(item) {
+
+  }
 }

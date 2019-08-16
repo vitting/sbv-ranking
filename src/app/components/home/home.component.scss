@@ -1,3 +1,5 @@
+@import "../../../variables";
+
 table {
   width: 100%;
   font-size: 0.8rem;
@@ -13,7 +15,6 @@ table {
     tr {
       border-collapse: collapse;
       border-bottom: 1px solid rgb(221, 221, 221);
-
       td {
         padding: 10px;
       }
@@ -28,4 +29,35 @@ table {
 .cell-position {
   padding-right: 10px;
   text-align: end;
+}
+
+// .position-container {
+//   border-radius: 50%;
+//   width: 40px;
+//   height: 40px;
+//   line-height: 40px;
+//   text-align: center;
+//   background-color: green;
+// }
+
+.profile-name-container {
+  display: flex;
+  align-items: center;
+  .profile-name {
+    margin-left: 5px;
+  }
+}
+
+.profile-image {
+  display: inline-block;
+  background-color: rebeccapurple;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }

@@ -8,11 +8,15 @@ import * as firebase from 'firebase';
 export class AuthService {
   private recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   private confirmResult: firebase.auth.ConfirmationResult;
-  user: any;
+  authUser: firebase.User;
+  userId: string;
   constructor(private fAuth: AngularFireAuth) {
     this.fAuth.user.subscribe((user) => {
+      this.authUser = user;
+      this.userId = user ? user.uid : null;
       if (user) {
         console.log(user);
+        console.log(user.uid);
       } else {
         console.log("NO USER");
       }

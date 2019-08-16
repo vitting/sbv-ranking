@@ -1,6 +1,7 @@
 export interface User {
   id: string;
   name: string;
-  sex: string;
+  gender: string;
+  photoUrl: string;
   active: boolean;
 }

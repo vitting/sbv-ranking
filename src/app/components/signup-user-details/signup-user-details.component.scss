@@ -8,19 +8,33 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
-    margin: 20px 0;
+    margin: 20px 0 5px 0;
   }
 
   .btn {
     border: none;
     width: 80px;
     height: 80px;
-    color: white;
+    background-color: $bg-color-no-profile;
     text-align: center;
-    background-color: $amber-900;
     font-size: 0.8rem;
-    padding-top: 10px;
+    overflow: hidden;
     border-radius: 50%;
+
+    .no-profile-image {
+      img {
+        padding-top: 10px;
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    .profile-image {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
   }
 
   .upload-btn-wrapper input[type=file] {
@@ -31,37 +45,66 @@
     opacity: 0;
   }
 
+  .profile-image-text {
+    font-size: 0.8rem;
+    color: $color-text-dimmed;
+  }
+
   form {
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    margin-top: 20px;
 
     .form-fields {
       max-width: 400px;
       width: 100%;
-    }
-    .form-field {
-      width: 100%;
-    }
 
-    .gender-chooser {
-      label {
-        color: $color-text-dimmed;
+      .form-field {
+        width: 100%;
       }
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
 
-      mat-radio-group {
+      .gender-chooser {
+        label {
+          color: $color-text-dimmed;
+        }
+        margin-top: 40px;
         display: flex;
         flex-direction: column;
+
+        mat-radio-group {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .signup-form-button {
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
       }
     }
+  }
+}
 
-    button {
-      margin-top: 20px;
-      align-self: flex-start;
-    }
+.image-cropper-container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  padding: 5px;
+  background-color: black;
+  top: 0;
+  left: 0;
+
+  .image-cropper-buttons {
+    @include flex-row-spacebetween-center;
+    padding: 20px;
+  }
+
+  .image-cropper-preview {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
   }
 }

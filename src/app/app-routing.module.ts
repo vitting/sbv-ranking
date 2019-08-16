@@ -7,6 +7,12 @@ import { SignupUserDetailsComponent } from './components/signup-user-details/sig
 
 const routes: Routes = [{
   path: "",
+  component: HomeComponent,
+}, {
+  path: "login",
+  component: PhoneLoginComponent,
+}, {
+  path: "profile",
   component: SignupUserDetailsComponent,
 }];
 
