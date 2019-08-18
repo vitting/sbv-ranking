@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatRippleModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -48,6 +49,10 @@ import { RegisterMatchComponent } from './components/register-match/register-mat
 import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { ChoseUserComponent } from './components/register-match/choose-user/choose-user.component';
 import { ChooseUserItemComponent } from './components/register-match/choose-user/choose-user-item/choose-user-item.component';
+import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
+import { LastMatchesComponent } from './components/last-matches/last-matches.component';
+import { NameOfUserPipe } from './components/shared/pipes/name-of-user.pipe';
+import { RankingItemComponent } from './components/home/ranking-item/ranking-item.component';
 
 export const DATEPICKER_FORMATS = {
   parse: {
@@ -64,6 +69,7 @@ export const DATEPICKER_FORMATS = {
 @NgModule({
   declarations: [
     AppComponent,
+    NameOfUserPipe,
     PhoneLoginComponent,
     SplashScreenComponent,
     HomeComponent,
@@ -73,7 +79,10 @@ export const DATEPICKER_FORMATS = {
     SignupUserDetailsComponent,
     RegisterMatchComponent,
     ChoseUserComponent,
-    ChooseUserItemComponent
+    ChooseUserItemComponent,
+    ErrorMessageComponent,
+    LastMatchesComponent,
+    RankingItemComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +105,7 @@ export const DATEPICKER_FORMATS = {
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     MatDatepickerModule,
     MatMomentDateModule,
     MatRippleModule

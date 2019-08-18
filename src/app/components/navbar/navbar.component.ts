@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   showProgressbarChangeSub: Subscription;
   navbarTitleChangeSub: Subscription;
   title = "Rangliste";
-  constructor(private navbarService: NavbarService) { }
+  constructor(private navbarService: NavbarService, private router: Router) { }
 
   ngOnInit() {
     this.showProgressbarChangeSub = this.navbarService.showProgressbarChange$.subscribe((show) => {
@@ -37,5 +38,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   menuItemClick(itemClicked: string) {
 
+  }
+
+  gotoHome() {
+    this.router.navigate(["/"]);
   }
 }

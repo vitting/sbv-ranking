@@ -1,0 +1,35 @@
+@import "../../../../variables";
+tr {
+  border-collapse: collapse;
+  border-bottom: 1px solid $border-color-divider;
+  cursor: pointer;
+  td {
+    padding: 10px;
+  }
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+.profile-name-container {
+  display: flex;
+  align-items: center;
+  .profile-name {
+    margin-left: 5px;
+  }
+}
+
+.profile-image {
+  display: inline-block;
+  background-color: rebeccapurple;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}

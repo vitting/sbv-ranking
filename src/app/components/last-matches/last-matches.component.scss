@@ -1,0 +1,56 @@
+@import "../../../variables";
+
+.last-5-matches {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  font-weight: lighter;
+  .last-5-matches-title {
+    font-size: 1rem;
+  }
+
+  .last-5-matches-row {
+    padding: 10px 0;
+    &.last-5-matches-row-even {
+      background-color: $amber-50;
+    }
+
+    .last-5-matches-details {
+      @include flex-row-spacebetween;
+      .last-5-matches-details-item {
+        flex: 1;
+      }
+    }
+
+    .last-5-matches-row-users {
+      @include flex-row-spacebetween-center;
+      .last-5-matches-team1, .last-5-matches-team2 {
+        flex: 1;
+
+        .last-5-matches-points {
+          color: $color-text-inverse;
+          display: inline-block;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+        }
+      }
+
+      .last-5-matches-team1 {
+        .last-5-matches-points {
+          background-color: $gold-color;
+        }
+      }
+
+      .last-5-matches-team2 {
+        .last-5-matches-points {
+          background-color: $silver-color;
+        }
+      }
+    }
+  }
+}

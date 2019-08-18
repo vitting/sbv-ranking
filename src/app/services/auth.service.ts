@@ -6,7 +6,7 @@ import { User } from '../models/user.model';
 import { Subscription, of } from 'rxjs';
 import { FirestoreService } from './firestore.service';
 import { catchError } from 'rxjs/operators';
-import { Userstat } from '../models/userstat.model';
+// import { Userstat } from '../models/userstat.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,10 @@ export class AuthService {
   private recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   private confirmResult: firebase.auth.ConfirmationResult;
   private usersIndex: { [key: string]: User } = {};
-  private userStatsIndex: { [key: string]: Userstat } = {};
+  // private userStatsIndex: { [key: string]: Userstat } = {};
   private users: User[] = [];
   private usersSub: Subscription;
-  private userStatSub: Subscription;
+  // private userStatSub: Subscription;
   constructor(
     private fAuth: AngularFireAuth,
     private splashService: SplashService,
@@ -30,9 +30,9 @@ export class AuthService {
       this.userId = user ? user.uid : null;
       if (user) {
         await this.getUsers();
-        await this.getUserStats();
+        // await this.getUserStats();
       } else {
-        this.userStatsIndex = {};
+        // this.userStatsIndex = {};
         this.users = [];
         this.usersIndex = {};
         console.log("NO USER");
@@ -59,22 +59,22 @@ export class AuthService {
     });
   }
 
-  private getUserStats() {
-    if (this.userStatSub) {
-      this.userStatSub.unsubscribe();
-    }
-    return new Promise((resolve) => {
-      this.usersSub = this.firestoreService.getUserStats().pipe(catchError((error) => {
-        console.error("getUserStats", error);
-        return of([]);
-      })).subscribe((userStats: Userstat[]) => {
-        for (const userStat of userStats) {
-          this.userStatsIndex[userStat.id] = userStat;
-        }
-        resolve(null);
-      });
-    });
-  }
+  // private getUserStats() {
+  //   if (this.userStatSub) {
+  //     this.userStatSub.unsubscribe();
+  //   }
+  //   return new Promise((resolve) => {
+  //     this.usersSub = this.firestoreService.getUserStats().pipe(catchError((error) => {
+  //       console.error("getUserStats", error);
+  //       return of([]);
+  //     })).subscribe((userStats: Userstat[]) => {
+  //       for (const userStat of userStats) {
+  //         this.userStatsIndex[userStat.id] = userStat;
+  //       }
+  //       resolve(null);
+  //     });
+  //   });
+  // }
 
   initPhoneLogin() {
     if (firebase.apps.length) {
@@ -113,9 +113,9 @@ export class AuthService {
     return this.usersIndex[userId];
   }
 
-  getUserStatInfo(userId: string) {
-    return this.userStatsIndex[userId];
-  }
+  // getUserStatInfo(userId: string) {
+  //   return this.userStatsIndex[userId];
+  // }
 
   getUsersAsArray() {
     return this.users;

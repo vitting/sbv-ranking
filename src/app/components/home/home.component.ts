@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { Router } from '@angular/router';
+import { FirestoreService } from 'src/app/services/firestore.service';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -8,38 +11,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  rankingUsers$: Observable<User[]>;
   dataSource = [
-    { position: 1, name: "Christian Vitting Jensen Hansen Nicolaisen", points: 122 },
-    { position: 2, name: "Christian Nicolaisen", points: 120 },
-    { position: 3, name: "Christian Nicolaisen", points: 118 },
-    { position: 4, name: "Christian Nicolaisen", points: 116 },
-    { position: 5, name: "Christian Nicolaisen", points: 114 },
-    { position: 6, name: "Christian Nicolaisen", points: 112 },
-    { position: 7, name: "Christian Nicolaisen", points: 110 },
-    { position: 8, name: "Christian Nicolaisen", points: 108 },
-    { position: 9, name: "Christian Nicolaisen", points: 106 },
-    { position: 10, name: "Christian Nicolaisen", points: 104 },
-    { position: 2, name: "Christian Nicolaisen", points: 120 },
-    { position: 3, name: "Christian Nicolaisen", points: 118 },
-    { position: 4, name: "Christian Nicolaisen", points: 116 },
-    { position: 5, name: "Christian Nicolaisen", points: 114 },
-    { position: 6, name: "Christian Nicolaisen", points: 112 },
-    { position: 7, name: "Christian Nicolaisen", points: 110 },
-    { position: 8, name: "Christian Nicolaisen", points: 108 },
-    { position: 9, name: "Christian Nicolaisen", points: 106 },
-    { position: 10, name: "Christian Nicolaisen", points: 104 }
+    { name: "Christian Vitting Jensen Hansen Nicolaisen", points: 122 },
+    { name: "Christian Nicolaisen", points: 120 },
+    { name: "Christian Nicolaisen", points: 118 },
+    { name: "Christian Nicolaisen", points: 116 }
   ];
-  displayedColumns: string[] = ['position', 'name', 'points'];
-  constructor(private navbarService: NavbarService, private router: Router) { }
+  constructor(
+    private navbarService: NavbarService,
+    private router: Router,
+    private firestoreService: FirestoreService) { }
 
   ngOnInit() {
     this.navbarService.navbarTitle = "Ranglisten";
+    this.rankingUsers$ = this.firestoreService.getRanking();
   }
   addMatchClicked() {
     this.router.navigate(["/matchs/add"]);
   }
 
-  rowClicked(item) {
-    console.log("RowClick");
+  rowClicked(user: User) {
+    console.log(user);
   }
 }

@@ -7,13 +7,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NameOfUserPipe implements PipeTransform {
   constructor(private authService: AuthService) {}
   transform(value: any, ...args: any[]): any {
-    // const user = this.authService.getUserInfo(value);
+    const user = this.authService.getUserInfo(value);
 
-    // if (user) {
-    //   return user.name;
-    // } else {
-    //   return "";
-    // }
+    if (user) {
+      return user.name;
+    } else {
+      return "";
+    }
   }
 
 }

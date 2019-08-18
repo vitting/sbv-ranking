@@ -1,0 +1,24 @@
+@import "../../../../variables";
+
+.error-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top;
+  .error-message {
+    background-color: $bg-color-error-message-container;
+    width: 300px;
+    padding: 0 0 20px 0;
+    margin-bottom: 10px;
+    .error-message-button {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .error-message-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

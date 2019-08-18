@@ -1,0 +1,26 @@
+<div class="last-5-matches">
+  <div class="last-5-matches-title">De sidste 3 kampe oprettet</div>
+  <div class="last-5-matches-row" *ngFor="let match of matches$ | async; let i=index"
+    [ngClass]="{'last-5-matches-row-even': i%2}">
+    <div class="last-5-matches-details">
+      <div class="last-5-matches-details-item">
+        <fa-icon [icon]="['far', 'calendar']" class="app-icon"></fa-icon>
+        {{match.matchDate.toDate() | amLocal:'da' | amDateFormat: 'DD-MM-YYYY'}}
+      </div>
+      <div class="last-5-matches-details-item">
+        <fa-icon [icon]="['fas', 'user']" class="app-icon"></fa-icon>{{match.createdBy | nameOfUser}}
+      </div>
+    </div>
+    <div class="last-5-matches-row-users">
+      <div class="last-5-matches-team1">
+        <div>{{match.player1Team1 | nameOfUser}} <span class="last-5-matches-points">{{match.Player1Team1Points}}</span>
+        </div>
+        <div>{{match.player2Team1 | nameOfUser}} <span class="last-5-matches-points">{{match.Player2Team1Points}}</span></div>
+      </div>
+      <div class="last-5-matches-team2">
+        <div>{{match.player1Team2 | nameOfUser}} <span class="last-5-matches-points">{{match.Player1Team2Points}}</span></div>
+        <div>{{match.player2Team2 | nameOfUser}} <span class="last-5-matches-points">{{match.Player2Team2Points}}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

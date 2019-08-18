@@ -1,6 +1,7 @@
 <app-splash-screen *ngIf="showSplash"></app-splash-screen>
 <div *ngIf="!showSplash" class="main-container">
   <app-navbar></app-navbar>
+  <app-error-message></app-error-message>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

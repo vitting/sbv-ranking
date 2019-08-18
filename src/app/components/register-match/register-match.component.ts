@@ -8,6 +8,8 @@ import { ChoseUserService, ChoseUserResult } from 'src/app/services/chose-user.s
 import { AuthService } from 'src/app/services/auth.service';
 import { Userstat } from 'src/app/models/userstat.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { ErrorMessageService } from 'src/app/services/error-message.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface ChosenUsers {
   player1: User;
@@ -45,20 +47,51 @@ export class RegisterMatchComponent implements OnInit {
     private authService: AuthService,
     private firestoreService: FirestoreService,
     private utilityService: UtilityService,
+    private errorMessageService: ErrorMessageService,
+    private snackBar: MatSnackBar,
     private choseUserService: ChoseUserService) { }
 
   ngOnInit() {
     this.navbarService.navbarTitle = "Registrer kamp";
+    this.initForm();
+  }
+
+  initForm() {
+    this.date = new Date(Date.now());
     this.player1Src = this.utilityService.noProfileImage;
     this.player2Src = this.utilityService.noProfileImage;
     this.player3Src = this.utilityService.noProfileImage;
     this.player4Src = this.utilityService.noProfileImage;
+    this.showProfile1 = false;
+    this.showProfile3 = false;
+    this.showProfile2 = false;
+    this.showProfile4 = false;
+    this.enableButton = false;
+    this.chosenUsers = {
+      player1: null,
+      player2: null,
+      player3: null,
+      player4: null
+    };
+    this.chosenUserIds = [];
   }
 
   async onSubmit() {
+    this.enableButton = false;
+    this.navbarService.showProgressbar = true;
     const data: ChosenUsers = this.chosenUsers;
     data.matchDate = this.date;
     const result = await this.firestoreService.addMatch(this.authService.userId, data);
+    this.navbarService.showProgressbar = false;
+    if (!result) {
+      this.enableButton = true;
+      this.errorMessageService.showMessage = true;
+    } else {
+      this.initForm();
+      this.snackBar.open("Kampen er blever oprettet!", null, {
+        duration: 1000
+      });
+    }
   }
 
   dateInput(event: MatDatepickerInputEvent<Moment>) {

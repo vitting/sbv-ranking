@@ -1,3 +1,4 @@
+<h1>Måske lave dem om til at billede er først</h1>
 <table>
   <thead>
     <tr>
@@ -7,15 +8,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of dataSource; let i=index" (click)="rowClicked(item)">
+    <tr *ngFor="let user of rankingUsers$ | async; let i=index" (click)="rowClicked(user)">
       <td><div class="position-container">{{i+1}}</div></td>
       <td>
         <div class="profile-name-container">
-          <div class="profile-image"><img src="https://firebasestorage.googleapis.com/v0/b/sbv-ranking.appspot.com/o/images%2Fprofile_PIJSAv5B4JfIjcuSyCdZtb1b4fr2.png?alt=media&token=18f96d63-f9d5-47f8-8c20-95a7e98aaea6" alt=""></div>
-          <span class="profile-name">{{item.name}}</span>
+          <div class="profile-image"><img [src]="user.photoUrl" alt=""></div>
+          <span class="profile-name">{{user.name}}</span>
         </div>
       </td>
-      <td>{{item.points}}</td>
+      <td>{{user.points}}</td>
     </tr>
   </tbody>
 </table>

@@ -1,7 +1,8 @@
 @import "./colors";
 
 $navbar-height: 60px;
-$color-text-navbar: #fff;
+$color-text-inverse: #fff;
+$color-text-navbar: $color-text-inverse;
 $color-text-dimmed: $dimmed-color;
 $bg-color-navbar: $amber-900;
 $bg-color-scrollbar-track: $amber-50;
@@ -12,6 +13,7 @@ $bg-color-splash-spinner: #fff;
 $bg-color-step: $deeppurple-500;
 $bg-color-step-text: #fff;
 $bg-color-no-profile: $amber-900;
+$bg-color-error-message-container: $amber-50;
 $border-color-dimmed: $amber-900;
 $border-color-divider: #dddddd;
 

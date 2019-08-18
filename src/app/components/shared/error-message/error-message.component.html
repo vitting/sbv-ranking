@@ -1,0 +1,13 @@
+<div class="error-message-container" [@hideMessage]="state">
+  <div class="error-message">
+    <div class="error-message-button">
+      <button mat-icon-button color="primary" class="app-button-outline" (click)="closeError()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="error-message-text">
+      <div>Ups der skete en fejl!</div>
+      <div>Prøv igen!</div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="match-date">
-    <span class="match-date-text">Vælg kamp dato</span>
+    <span class="match-date-text noselect">Vælg kamp dato</span>
     <mat-form-field [floatLabel]="'never'">
       <input matInput [matDatepicker]="picker" placeholder="Kamp dato" disabled [value]="date.toISOString()"
         (dateChange)="dateInput($event)">
@@ -14,14 +14,16 @@
         <div class="user-profile" (click)="showAddUser(1)" matRipple>
           <img [src]="player1Src" [ngClass]="{'no-user-profile': !showProfile1}">
         </div>
-        <div class="text">vindere</div>
+        <div class="text noselect">vindere</div>
         <div class="user-profile" (click)="showAddUser(2)" matRipple>
           <img [src]="player2Src" [ngClass]="{'no-user-profile': !showProfile2}">
         </div>
       </div>
       <div class="user-row-names">
-        <div class="user-row-name">{{this.chosenUsers.player1?.name}}</div>
-        <div class="user-row-name">{{this.chosenUsers.player2?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="chosenUsers.player1">{{chosenUsers.player1?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="!chosenUsers.player1">Ingen valgt</div>
+        <div class="user-row-name noselect" *ngIf="chosenUsers.player2">{{chosenUsers.player2?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="!chosenUsers.player2">Ingen valgt</div>
       </div>
     </div>
 
@@ -31,18 +33,19 @@
         <div class="user-profile" (click)="showAddUser(3)" matRipple>
           <img [src]="player3Src" [ngClass]="{'no-user-profile': !showProfile3}">
         </div>
-        <div class="text">tabere</div>
+        <div class="text noselect">tabere</div>
         <div class="user-profile" (click)="showAddUser(4)" matRipple>
           <img [src]="player4Src" [ngClass]="{'no-user-profile': !showProfile4}">
         </div>
       </div>
       <div class="user-row-names">
-        <div class="user-row-name">{{this.chosenUsers.player3?.name}}</div>
-        <div class="user-row-name">{{this.chosenUsers.player4?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="chosenUsers.player3">{{this.chosenUsers.player3?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="!chosenUsers.player3">Ingen valgt</div>
+        <div class="user-row-name noselect" *ngIf="chosenUsers.player4">{{this.chosenUsers.player4?.name}}</div>
+        <div class="user-row-name noselect" *ngIf="!chosenUsers.player4">Ingen valgt</div>
       </div>
     </div>
   </div>
   <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="!enableButton">Opret kamp</button>
 </div>
-
 <app-choose-user (addUserClick)="userChoosen($event)" (closeChoseUserClick)="chooseUserClosed()"></app-choose-user>

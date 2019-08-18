@@ -37,6 +37,18 @@ export class FirestoreService {
     return this.db.createId();
   }
 
+  getMatches(limit: number = 3) {
+    return this.db.collection<Match>("matches", (ref) => {
+      return ref.orderBy("createdAt", "desc").limit(limit);
+    }).valueChanges();
+  }
+
+  getRanking() {
+    return this.db.collection<User>("users", (ref) => {
+      return ref.orderBy("points", "desc");
+    }).valueChanges();
+  }
+
   async addMatch(userId: string, data: ChosenUsers) {
     const id = this.newId;
     const matchDate = this.timestampFromDate(data.matchDate);
