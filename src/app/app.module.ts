@@ -15,43 +15,26 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatRippleModule} from '@angular/material/core';
+import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
-  faTimesCircle,
-  faTasks,
   faPlus,
   faUser,
-  faUsers,
-  faEdit,
-  faHome,
-  faSignInAlt,
   faSignOutAlt,
-  faArrowLeft,
-  faCircle,
-  faExclamationCircle,
-  faChevronCircleRight,
   faCog,
-  faDirections,
-  faCalendarDay
+  faCalendarDay,
+  faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import {
-  faComment,
-  faCalendar,
-  faTrashAlt,
-  faLightbulb,
-  faClipboard,
-  faCheckSquare,
-  faSquare,
-  faQuestionCircle,
-  faCalendarAlt,
-  faCalendarPlus,
-  faFileAlt
+  faCalendar
 } from '@fortawesome/free-regular-svg-icons';
 import 'moment/locale/da';
 import { MomentModule } from 'ngx-moment';
@@ -61,6 +44,22 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RankingDetailsComponent } from './components/ranking-details/ranking-details.component';
 import { FabButtonComponent } from './components/shared/fab-button/fab-button.component';
 import { SignupUserDetailsComponent } from './components/signup-user-details/signup-user-details.component';
+import { RegisterMatchComponent } from './components/register-match/register-match.component';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { ChoseUserComponent } from './components/register-match/choose-user/choose-user.component';
+import { ChooseUserItemComponent } from './components/register-match/choose-user/choose-user-item/choose-user-item.component';
+
+export const DATEPICKER_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -71,7 +70,10 @@ import { SignupUserDetailsComponent } from './components/signup-user-details/sig
     NavbarComponent,
     RankingDetailsComponent,
     FabButtonComponent,
-    SignupUserDetailsComponent
+    SignupUserDetailsComponent,
+    RegisterMatchComponent,
+    ChoseUserComponent,
+    ChooseUserItemComponent
   ],
   imports: [
     BrowserModule,
@@ -93,41 +95,28 @@ import { SignupUserDetailsComponent } from './components/signup-user-details/sig
     MatProgressBarModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatRippleModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'da-DK' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
+    { provide: MAT_DATE_FORMATS, useValue: DATEPICKER_FORMATS }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      faTimesCircle,
-      faComment,
       faCog,
-      faTasks,
       faCalendar,
       faCalendarDay,
       faUser,
       faPlus,
-      faLightbulb,
-      faSignInAlt,
-      faCalendarAlt,
-      faCalendarPlus,
-      faEdit,
-      faCheckSquare,
-      faSquare,
-      faClipboard,
-      faHome,
-      faTrashAlt,
-      faUsers,
-      faArrowLeft,
-      faCircle,
-      faQuestionCircle,
-      faChevronCircleRight,
-      faExclamationCircle,
-      faFileAlt,
-      faDirections,
-      faFileAlt,
+      faUserPlus,
       faSignOutAlt);
   }
 }

@@ -1,25 +1,78 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
+import { SplashService } from './splash.service';
+import { User } from '../models/user.model';
+import { Subscription, of } from 'rxjs';
+import { FirestoreService } from './firestore.service';
+import { catchError } from 'rxjs/operators';
+import { Userstat } from '../models/userstat.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private recaptchaVerifier: firebase.auth.RecaptchaVerifier;
-  private confirmResult: firebase.auth.ConfirmationResult;
   authUser: firebase.User;
   userId: string;
-  constructor(private fAuth: AngularFireAuth) {
-    this.fAuth.user.subscribe((user) => {
+  private recaptchaVerifier: firebase.auth.RecaptchaVerifier;
+  private confirmResult: firebase.auth.ConfirmationResult;
+  private usersIndex: { [key: string]: User } = {};
+  private userStatsIndex: { [key: string]: Userstat } = {};
+  private users: User[] = [];
+  private usersSub: Subscription;
+  private userStatSub: Subscription;
+  constructor(
+    private fAuth: AngularFireAuth,
+    private splashService: SplashService,
+    private firestoreService: FirestoreService) {
+    this.fAuth.user.subscribe(async (user) => {
       this.authUser = user;
       this.userId = user ? user.uid : null;
       if (user) {
-        console.log(user);
-        console.log(user.uid);
+        await this.getUsers();
+        await this.getUserStats();
       } else {
+        this.userStatsIndex = {};
+        this.users = [];
+        this.usersIndex = {};
         console.log("NO USER");
       }
+      this.splashService.showSplashScreen = false;
+    });
+  }
+
+  private getUsers() {
+    if (this.usersSub) {
+      this.usersSub.unsubscribe();
+    }
+    return new Promise((resolve) => {
+      this.usersSub = this.firestoreService.getUsers().pipe(catchError((error) => {
+        console.error("getUsers", error);
+        return of([]);
+      })).subscribe((users: User[]) => {
+        this.users = users;
+        for (const user of users) {
+          this.usersIndex[user.id] = user;
+        }
+        resolve(null);
+      });
+    });
+  }
+
+  private getUserStats() {
+    if (this.userStatSub) {
+      this.userStatSub.unsubscribe();
+    }
+    return new Promise((resolve) => {
+      this.usersSub = this.firestoreService.getUserStats().pipe(catchError((error) => {
+        console.error("getUserStats", error);
+        return of([]);
+      })).subscribe((userStats: Userstat[]) => {
+        for (const userStat of userStats) {
+          this.userStatsIndex[userStat.id] = userStat;
+        }
+        resolve(null);
+      });
     });
   }
 
@@ -54,5 +107,17 @@ export class AuthService {
 
   async logout() {
     await this.fAuth.auth.signOut();
+  }
+
+  getUserInfo(userId: string) {
+    return this.usersIndex[userId];
+  }
+
+  getUserStatInfo(userId: string) {
+    return this.userStatsIndex[userId];
+  }
+
+  getUsersAsArray() {
+    return this.users;
   }
 }

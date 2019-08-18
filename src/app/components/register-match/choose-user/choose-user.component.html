@@ -1,0 +1,4 @@
+<div class="choose-user-container" [@hideContainer]="state">
+  <app-choose-user-item *ngFor="let user of users; let i=index" [highlight]="user.id === authUserId" [lastItem]="i === users.length-1" [user]="user" (addUserClick)="addUser($event)"></app-choose-user-item>
+</div>
+<app-fab-button [buttonShowState]="'hide'" [iconType]="'close'" (fabClick)="closeAddUser()"></app-fab-button>

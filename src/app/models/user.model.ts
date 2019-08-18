@@ -4,4 +4,5 @@ export interface User {
   gender: string;
   photoUrl: string;
   active: boolean;
+  points: number;
 }

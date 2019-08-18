@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/services/navbar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,16 +30,16 @@ export class HomeComponent implements OnInit {
     { position: 10, name: "Christian Nicolaisen", points: 104 }
   ];
   displayedColumns: string[] = ['position', 'name', 'points'];
-  constructor(private navbarService: NavbarService) { }
+  constructor(private navbarService: NavbarService, private router: Router) { }
 
   ngOnInit() {
     this.navbarService.navbarTitle = "Ranglisten";
   }
   addMatchClicked() {
-
+    this.router.navigate(["/matchs/add"]);
   }
 
   rowClicked(item) {
-
+    console.log("RowClick");
   }
 }

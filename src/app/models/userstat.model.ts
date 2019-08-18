@@ -4,6 +4,5 @@ export interface Userstat {
   matchesWon: number;
   matchesLost: number;
   pointsWon: number;
-  pointsLost: number;
   active: boolean;
 }

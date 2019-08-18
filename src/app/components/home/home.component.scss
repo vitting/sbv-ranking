@@ -14,7 +14,8 @@ table {
   tbody {
     tr {
       border-collapse: collapse;
-      border-bottom: 1px solid rgb(221, 221, 221);
+      border-bottom: 1px solid $border-color-divider;
+      cursor: pointer;
       td {
         padding: 10px;
       }

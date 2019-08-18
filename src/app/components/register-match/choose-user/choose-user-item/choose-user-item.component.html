@@ -1,0 +1,14 @@
+<div class="user-row" [ngClass]="{'highlight-row': highlight}">
+  <div class="user-profile-container">
+    <div class="user-profile">
+      <img [src]="src">
+    </div>
+    <div>{{user.name}}</div>
+  </div>
+  <div class="user-add-button" *ngIf="showAddButton">
+    <button mat-icon-button class="app-button-outline" color="primary" (click)="addUser()">
+      <fa-icon [icon]="['fas', 'user-plus']" class="app-menu-icon user-add-icon"></fa-icon>
+    </button>
+  </div>
+</div>
+<div class="divider" *ngIf="!lastItem"></div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, AfterViewInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { FabButtonService } from 'src/app/services/fab-button.service';
 import { Subscription } from 'rxjs';
@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs';
       })),
       state("hide", style({
         opacity: '0',
-        zIndex: "0"
+        zIndex: "-20"
       })),
       transition("show => hide", animate(5)),
       transition("hide => show", animate(200))
@@ -34,9 +34,8 @@ import { Subscription } from 'rxjs';
 export class FabButtonComponent implements OnInit, OnDestroy {
   @Output() fabClick = new EventEmitter<void>();
   @Input() iconType = "add";
-  showFabButton = true;
-  state = "right";
-  buttonShowState = "show";
+  @Input() state = "right";
+  @Input() buttonShowState = "show";
   private showFabButtonChangeSub: Subscription;
   constructor(private fabButtonService: FabButtonService) { }
 
@@ -47,8 +46,6 @@ export class FabButtonComponent implements OnInit, OnDestroy {
       } else {
         this.buttonShowState = "hide";
       }
-
-      this.showFabButton = show;
     });
   }
 

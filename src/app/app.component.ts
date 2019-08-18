@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { SplashService } from './services/splash.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  showSplash = false;
-  constructor(private authService: AuthService) {}
+  showSplash = true;
+  constructor(private authService: AuthService, private splashService: SplashService) {}
 
   ngOnInit(): void {
-
+    this.splashService.splashScreenChanges$.subscribe((show) => {
+      this.showSplash = show;
+    });
   }
 
 }

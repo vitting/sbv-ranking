@@ -1,0 +1,36 @@
+@import "../../../../../variables";
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+
+  &.highlight-row {
+    font-weight: 500;
+  }
+  .user-add-icon {
+    font-size: 1.2rem;
+  }
+
+  .user-profile-container {
+    display: flex;
+    align-items: center;
+    .user-profile {
+      margin-right: 10px;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 40px;
+      height: 40px;
+      background-color: $bg-color-no-profile;
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+.divider {
+  margin: 10px 0;
+  border-bottom: 1px solid $border-color-divider;
+}

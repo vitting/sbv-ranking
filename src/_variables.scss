@@ -2,16 +2,18 @@
 
 $navbar-height: 60px;
 $color-text-navbar: #fff;
-$color-text-dimmed: #ADADAD;
+$color-text-dimmed: $dimmed-color;
 $bg-color-navbar: $amber-900;
 $bg-color-scrollbar-track: $amber-50;
 $bg-color-scrollbar-thumb: $amber-100;
 $bg-color-scrollbar-thumb-hover: $amber-200;
-$bg-color-splash: $indigo-500;
+$bg-color-splash: $amber-900;
 $bg-color-splash-spinner: #fff;
 $bg-color-step: $deeppurple-500;
 $bg-color-step-text: #fff;
-$bg-color-no-profile: $deeppurple-500;
+$bg-color-no-profile: $amber-900;
+$border-color-dimmed: $amber-900;
+$border-color-divider: #dddddd;
 
 @mixin flex-row-spacebetween {
   display: flex;
