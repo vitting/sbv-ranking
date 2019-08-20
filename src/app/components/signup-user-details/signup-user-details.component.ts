@@ -61,7 +61,6 @@ export class SignupUserDetailsComponent implements OnInit {
         }
 
         const result = await this.firestoreService.addUserProfile(this.authService.userId, name, gender, dataUrl);
-        const result2 = await this.firestoreService.addUserStat(this.authService.userId);
       } catch (error) {
         console.error(error);
       } finally {
@@ -84,7 +83,7 @@ export class SignupUserDetailsComponent implements OnInit {
     console.log(event);
   }
 
-  imageLoaded() {}
+  imageLoaded() { }
 
   cropperReady() {
     this.navbarService.showProgressbar = false;

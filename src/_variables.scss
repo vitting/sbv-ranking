@@ -3,7 +3,7 @@
 $navbar-height: 60px;
 $color-text-inverse: #fff;
 $color-text-navbar: $color-text-inverse;
-$color-text-dimmed: $dimmed-color;
+$color-text-dimmed: $dimmed-color2;
 $bg-color-navbar: $amber-900;
 $bg-color-scrollbar-track: $amber-50;
 $bg-color-scrollbar-thumb: $amber-100;
@@ -16,7 +16,7 @@ $bg-color-no-profile: $amber-900;
 $bg-color-error-message-container: $amber-50;
 $border-color-dimmed: $amber-900;
 $border-color-divider: #dddddd;
-
+$color-shadow: rgba(0, 0, 0, 0.5);
 @mixin flex-row-spacebetween {
   display: flex;
   justify-content: space-between;
@@ -25,4 +25,8 @@ $border-color-divider: #dddddd;
 @mixin flex-row-spacebetween-center {
   @include flex-row-spacebetween;
   align-items: center;
+}
+
+@mixin profile-pic-box-shadow {
+  box-shadow: 0 0 3px $color-shadow;
 }

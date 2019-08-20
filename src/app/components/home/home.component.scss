@@ -1,48 +1,45 @@
 @import "../../../variables";
 
-table {
-  width: 100%;
-  font-size: 0.8rem;
-  font-weight: lighter;
+.ranking-container {
+  .ranking-row {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-text-dimmed;
 
-  thead {
-    th {
-      font-weight: lighter;
+    &:last-child {
+      border-bottom: none;
     }
-  }
 
-  tbody {
-    tr {
-      border-collapse: collapse;
-      border-bottom: 1px solid $border-color-divider;
-      cursor: pointer;
-      td {
-        padding: 10px;
+    .ranking-details {
+      display: flex;
+      align-items: center;
+
+      .ranking-image {
+        margin-right: 10px;
+      }
+
+      .ranking-position {
+        margin-right: 10px;
       }
     }
 
-    tr:last-child {
-      border-bottom: none;
+    .ranking-button {
+      display: flex;
+      align-items: center;
+
+      .ranking-points {
+        margin-right: 5px;
+      }
     }
-  }
-}
-
-.cell-position {
-  padding-right: 10px;
-  text-align: end;
-}
-
-.profile-name-container {
-  display: flex;
-  align-items: center;
-  .profile-name {
-    margin-left: 5px;
   }
 }
 
 .profile-image {
+  @include profile-pic-box-shadow;
   display: inline-block;
-  background-color: rebeccapurple;
+  background-color: $bg-color-no-profile;
   border-radius: 50%;
   overflow: hidden;
   width: 40px;

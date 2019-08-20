@@ -6,7 +6,6 @@ import { Moment } from 'moment';
 import { User } from 'src/app/models/user.model';
 import { ChoseUserService, ChoseUserResult } from 'src/app/services/chose-user.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Userstat } from 'src/app/models/userstat.model';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

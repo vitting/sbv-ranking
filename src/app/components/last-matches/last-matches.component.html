@@ -1,4 +1,4 @@
-<div class="last-5-matches">
+<div class="last-5-matches" role="table">
   <div class="last-5-matches-title">De sidste 3 kampe oprettet</div>
   <div class="last-5-matches-row" *ngFor="let match of matches$ | async; let i=index"
     [ngClass]="{'last-5-matches-row-even': i%2}">

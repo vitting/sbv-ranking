@@ -14,4 +14,8 @@ export class UtilityService {
   get noProfileImage() {
     return "assets/images/no-pic-120x120-white.png";
   }
+
+  get currentYear() {
+    return new Date(Date.now()).getFullYear();
+  }
 }

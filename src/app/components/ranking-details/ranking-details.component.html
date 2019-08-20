@@ -1,1 +1,39 @@
-<p>ranking-details works!</p>
+<h1>Vis datoer vs weeks</h1>
+<div class="container">
+  <div class="user-info">
+    <div class="image">
+      <img [src]="user.id | profilePicOfUser">
+    </div>
+    <div class="name">
+      {{user.name}}
+    </div>
+    <div class="position">
+      <span>Placering: </span><span class="result-container">{{position}}.</span>
+    </div>
+    <div class="points">
+      <span>Points: </span><span class="result-container">{{points}}</span>
+    </div>
+    <div class="matches-stat">
+      <div class="header">Kampe spillet</div>
+      <div class="matches-details">
+        <div class="total">
+          <div>Samlet</div>
+          <div><span class="result-container">{{matchesTotal}}</span></div>
+        </div>
+        <div class="won">
+          <div>Vundet</div>
+          <div><span class="result-container">{{matchesWon}}</span></div>
+        </div>
+        <div class="lost">
+          <div>Tabte</div>
+          <div><span class="result-container">{{matchesLost}}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="charts">
+    <canvas id="canvas"></canvas>
+  </div>
+  <button mat-raised-button (click)="showMatches()">Vis kampe</button>
+  <button mat-raised-button (click)="test()">TEST</button>
+</div>

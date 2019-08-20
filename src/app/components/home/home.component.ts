@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  currentYear = 0;
   rankingUsers$: Observable<User[]>;
   dataSource = [
     { name: "Christian Vitting Jensen Hansen Nicolaisen", points: 122 },
@@ -21,17 +23,25 @@ export class HomeComponent implements OnInit {
   constructor(
     private navbarService: NavbarService,
     private router: Router,
-    private firestoreService: FirestoreService) { }
+    private utilityService: UtilityService,
+    private firestoreService: FirestoreService) {
+      this.currentYear = this.utilityService.currentYear;
+    }
 
   ngOnInit() {
     this.navbarService.navbarTitle = "Ranglisten";
     this.rankingUsers$ = this.firestoreService.getRanking();
   }
+
   addMatchClicked() {
     this.router.navigate(["/matchs/add"]);
   }
 
-  rowClicked(user: User) {
-    console.log(user);
+  rowClicked(user: User, position: number) {
+    this.router.navigate(["/users", user.id], {
+      queryParams: {
+        p: position
+      }
+    });
   }
 }

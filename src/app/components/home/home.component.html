@@ -1,23 +1,19 @@
-<h1>Måske lave dem om til at billede er først</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Nr.</th>
-      <th>Navn</th>
-      <th>Points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of rankingUsers$ | async; let i=index" (click)="rowClicked(user)">
-      <td><div class="position-container">{{i+1}}</div></td>
-      <td>
-        <div class="profile-name-container">
-          <div class="profile-image"><img [src]="user.photoUrl" alt=""></div>
-          <span class="profile-name">{{user.name}}</span>
-        </div>
-      </td>
-      <td>{{user.points}}</td>
-    </tr>
-  </tbody>
-</table>
+<div role="table" class="ranking-container">
+  <div role="row" class="ranking-row" *ngFor="let user of rankingUsers$ | async; let i=index">
+    <div class="ranking-details">
+      <div role="cell" class="ranking-image">
+        <div class="profile-image"><img [src]="user.id | profilePicOfUser"></div>
+      </div>
+      <div role="cell" class="ranking-position">{{i+1}}.</div>
+      <div role="cell" class="ranking-name">{{user.id | nameOfUser}}</div>
+    </div>
+    <div class="ranking-button">
+      <span role="cell" class="ranking-points">{{user.seasons[currentYear].points}}</span>
+      <button mat-icon-button color="primary" class="app-button-outline" (click)="rowClicked(user, i+1)">
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
 <app-fab-button (fabClick)="addMatchClicked()"></app-fab-button>

@@ -1,0 +1,55 @@
+<div class="matches">
+    <div class="match-row" *ngFor="let match of matches">
+      <div class="match-details">
+        <div>
+          <fa-icon [icon]="['far', 'calendar']" class="app-icon"></fa-icon>
+          {{match.matchDate.toDate() | amLocal:'da' | amDateFormat: 'DD-MM-YYYY'}}
+        </div>
+        <div>
+          <fa-icon [icon]="['fas', 'user']" class="app-icon"></fa-icon>{{match.createdBy | nameOfUser}}
+        </div>
+      </div>
+      <div class="match-header">
+        <div class="match-player-points winner">Vinder points: {{match.Player1Team1Points}}</div>
+        <div class="match-player-points loser">Taber points: {{match.Player1Team2Points}}</div>
+      </div>
+      <div class="match-players">
+        <div class="match-team1 winner">
+          <div class="match-profile">
+            <div class="profile-image"><img [src]="match.player1Team1 | profilePicOfUser"></div>
+            <div class="match-player">
+              <div class="match-player-name">
+                {{match.player1Team1 | nameOfUser}}
+              </div>
+            </div>
+          </div>
+          <div class="match-profile">
+            <div class="profile-image"><img [src]="match.player2Team1 | profilePicOfUser"></div>
+            <div class="match-player">
+              <div class="match-player-name">
+                {{match.player2Team1 | nameOfUser}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="match-team2 loser">
+          <div class="match-profile">
+            <div class="profile-image"><img [src]="match.player1Team2 | profilePicOfUser"></div>
+            <div class="match-player">
+              <div class="match-player-name">
+                {{match.player1Team2 | nameOfUser}}
+              </div>
+            </div>
+          </div>
+          <div class="match-profile">
+            <div class="profile-image"><img [src]="match.player2Team2 | profilePicOfUser"></div>
+            <div class="match-player">
+              <div class="match-player-name">
+                {{match.player2Team2 | nameOfUser}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

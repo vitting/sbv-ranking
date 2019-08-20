@@ -38,6 +38,7 @@
         justify-content: space-between;
 
         .user-profile {
+          @include profile-pic-box-shadow;
           cursor: pointer;
           border-radius: 50%;
           overflow: hidden;

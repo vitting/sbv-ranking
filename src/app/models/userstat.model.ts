@@ -1,8 +1,6 @@
-export interface Userstat {
-  id: string;
+export interface UserStat {
   matches: string[];
   matchesWon: number;
   matchesLost: number;
-  pointsWon: number;
-  active: boolean;
+  points: number;
 }

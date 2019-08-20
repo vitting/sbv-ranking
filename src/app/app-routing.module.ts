@@ -5,6 +5,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupUserDetailsComponent } from './components/signup-user-details/signup-user-details.component';
 import { RegisterMatchComponent } from './components/register-match/register-match.component';
 import { ChoseUserComponent } from './components/register-match/choose-user/choose-user.component';
+import { RankingDetailsComponent } from './components/ranking-details/ranking-details.component';
+import { RankingDetailsMatchesComponent } from './components/ranking-details-matches/ranking-details-matches.component';
 
 
 const routes: Routes = [{
@@ -16,6 +18,12 @@ const routes: Routes = [{
 }, {
   path: "matchs/users",
   component: ChoseUserComponent,
+}, {
+  path: "users/:id",
+  component: RankingDetailsComponent,
+}, {
+  path: "users/:id/matches",
+  component: RankingDetailsMatchesComponent,
 }, {
   path: "login",
   component: PhoneLoginComponent,

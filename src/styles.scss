@@ -1,5 +1,11 @@
 @import "variables";
 
+router-outlet ~ * {
+  position: absolute;
+  height: calc(100% - $navbar-height - 20px);
+  width: calc(100% - 20px);
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

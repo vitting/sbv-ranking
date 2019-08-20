@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     .user-profile {
+      @include profile-pic-box-shadow;
       margin-right: 10px;
       border-radius: 50%;
       overflow: hidden;

@@ -12,5 +12,7 @@ export interface Match {
   Player2Team1Points: number;
   Player1Team2Points: number;
   Player2Team2Points: number;
+  players: string[];
+  season: number;
   active: boolean;
 }

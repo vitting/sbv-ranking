@@ -32,7 +32,10 @@ import {
   faSignOutAlt,
   faCog,
   faCalendarDay,
-  faUserPlus
+  faUserPlus,
+  faInfoCircle,
+  faVolleyballBall,
+  faTrophy
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faCalendar
@@ -52,7 +55,8 @@ import { ChooseUserItemComponent } from './components/register-match/choose-user
 import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
 import { LastMatchesComponent } from './components/last-matches/last-matches.component';
 import { NameOfUserPipe } from './components/shared/pipes/name-of-user.pipe';
-import { RankingItemComponent } from './components/home/ranking-item/ranking-item.component';
+import { ProfilePicOfUserPipe } from './components/shared/pipes/profile-pic-of-user.pipe';
+import { RankingDetailsMatchesComponent } from './components/ranking-details-matches/ranking-details-matches.component';
 
 export const DATEPICKER_FORMATS = {
   parse: {
@@ -70,6 +74,7 @@ export const DATEPICKER_FORMATS = {
   declarations: [
     AppComponent,
     NameOfUserPipe,
+    ProfilePicOfUserPipe,
     PhoneLoginComponent,
     SplashScreenComponent,
     HomeComponent,
@@ -82,7 +87,7 @@ export const DATEPICKER_FORMATS = {
     ChooseUserItemComponent,
     ErrorMessageComponent,
     LastMatchesComponent,
-    RankingItemComponent
+    RankingDetailsMatchesComponent
   ],
   imports: [
     BrowserModule,
@@ -127,6 +132,9 @@ export class AppModule {
       faUser,
       faPlus,
       faUserPlus,
+      faInfoCircle,
+      faTrophy,
+      faVolleyballBall,
       faSignOutAlt);
   }
 }
