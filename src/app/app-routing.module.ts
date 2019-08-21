@@ -8,28 +8,33 @@ import { ChoseUserComponent } from './components/register-match/choose-user/choo
 import { RankingDetailsComponent } from './components/ranking-details/ranking-details.component';
 import { RankingDetailsMatchesComponent } from './components/ranking-details-matches/ranking-details-matches.component';
 
-
 const routes: Routes = [{
   path: "",
   component: HomeComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "matchs/add",
   component: RegisterMatchComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "matchs/users",
   component: ChoseUserComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "users/:id",
   component: RankingDetailsComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "users/:id/matches",
   component: RankingDetailsMatchesComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "login",
   component: PhoneLoginComponent,
 }, {
   path: "profile",
   component: SignupUserDetailsComponent,
+  // canActivate: [AuthGuard]
 }, {
   path: "**",
   component: PhoneLoginComponent,

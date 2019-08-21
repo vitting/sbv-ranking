@@ -1,4 +1,14 @@
 @import "../../../variables";
+.ranking-filter {
+  display: flex;
+  justify-content: center;
+  .ranking-filter-container {
+    width: 250px;
+    mat-radio-group {
+      @include flex-row-spacebetween-center;
+    }
+  }
+}
 
 .ranking-container {
   .ranking-row {
@@ -16,12 +26,14 @@
       display: flex;
       align-items: center;
 
-      .ranking-image {
+      .ranking-image, .ranking-position, .ranking-name {
         margin-right: 10px;
       }
 
-      .ranking-position {
-        margin-right: 10px;
+      .ranking-name {
+        &.selected {
+          font-weight: 500;
+        }
       }
     }
 

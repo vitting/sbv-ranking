@@ -62,81 +62,89 @@ export class FirestoreService {
     }).valueChanges();
   }
 
-  getRanking() {
+  getRanking(mode: string = "a") {
     const year = this.utilityService.currentYear;
-    return this.db.collection<User>("users", (ref) => {
-      return ref.orderBy(`seasons.${year}.points`, "desc");
-    }).valueChanges();
+    if (mode === "a") {
+      return this.db.collection<User>("users", (ref) => {
+        return ref.orderBy(`seasons.${year}.points`, "desc");
+      }).valueChanges();
+    } else {
+      return this.db.collection<User>("users", (ref) => {
+        return ref.where("gender", "==", mode).orderBy(`seasons.${year}.points`, "desc");
+      }).valueChanges();
+    }
   }
 
   // Modes: w = weeks / d = day
   async getUserChartData(userId: string, mode = "w") {
-    const year = this.utilityService.currentYear;
     const dataObj: { [key: string]: { matches: number, points: number } } = {};
     const matches = await this.getPlayerMatches(userId).toPromise();
-    for (const match of matches) {
-      if (mode === "w") {
-        const week = moment((match.matchDate.toDate() as Date)).isoWeek();
-        if (week in dataObj) {
-          dataObj[week].matches = ++dataObj[week].matches;
-          if (match.player1Team1 === userId) {
-            dataObj[week].points += match.Player1Team1Points;
-          } else if (match.player2Team1 === userId) {
-            dataObj[week].points += match.Player2Team1Points;
-          } else if ((match.player1Team2 === userId)) {
-            dataObj[week].points += match.Player1Team2Points;
-          } else if (match.player2Team2 === userId) {
-            dataObj[week].points += match.Player2Team2Points;
+    if (matches.length !== 0) {
+      for (const match of matches) {
+        if (mode === "w") {
+          const week = moment((match.matchDate.toDate() as Date)).isoWeek();
+          if (week in dataObj) {
+            dataObj[week].matches = ++dataObj[week].matches;
+            if (match.player1Team1 === userId) {
+              dataObj[week].points += match.Player1Team1Points;
+            } else if (match.player2Team1 === userId) {
+              dataObj[week].points += match.Player2Team1Points;
+            } else if ((match.player1Team2 === userId)) {
+              dataObj[week].points += match.Player1Team2Points;
+            } else if (match.player2Team2 === userId) {
+              dataObj[week].points += match.Player2Team2Points;
+            }
+          } else {
+            dataObj[week] = {
+              matches: 1,
+              points: 0
+            };
+            if (match.player1Team1 === userId) {
+              dataObj[week].points = match.Player1Team1Points;
+            } else if (match.player2Team1 === userId) {
+              dataObj[week].points = match.Player2Team1Points;
+            } else if ((match.player1Team2 === userId)) {
+              dataObj[week].points = match.Player1Team2Points;
+            } else if (match.player2Team2 === userId) {
+              dataObj[week].points = match.Player2Team2Points;
+            }
           }
         } else {
-          dataObj[week] = {
-            matches: 1,
-            points: 0
-          };
-          if (match.player1Team1 === userId) {
-            dataObj[week].points = match.Player1Team1Points;
-          } else if (match.player2Team1 === userId) {
-            dataObj[week].points = match.Player2Team1Points;
-          } else if ((match.player1Team2 === userId)) {
-            dataObj[week].points = match.Player1Team2Points;
-          } else if (match.player2Team2 === userId) {
-            dataObj[week].points = match.Player2Team2Points;
-          }
-        }
-      } else {
-        const dateString = moment((match.matchDate.toDate() as Date)).format("DD-MM-YYYY");
+          const dateString = moment((match.matchDate.toDate() as Date)).format("DD-MM-YYYY");
 
-        if (dateString in dataObj) {
-          dataObj[dateString].matches = ++dataObj[dateString].matches;
-          if (match.player1Team1 === userId) {
-            dataObj[dateString].points += match.Player1Team1Points;
-          } else if (match.player2Team1 === userId) {
-            dataObj[dateString].points += match.Player2Team1Points;
-          } else if ((match.player1Team2 === userId)) {
-            dataObj[dateString].points += match.Player1Team2Points;
-          } else if (match.player2Team2 === userId) {
-            dataObj[dateString].points += match.Player2Team2Points;
-          }
-        } else {
-          dataObj[dateString] = {
-            matches: 1,
-            points: 0
-          };
-          if (match.player1Team1 === userId) {
-            dataObj[dateString].points = match.Player1Team1Points;
-          } else if (match.player2Team1 === userId) {
-            dataObj[dateString].points = match.Player2Team1Points;
-          } else if ((match.player1Team2 === userId)) {
-            dataObj[dateString].points = match.Player1Team2Points;
-          } else if (match.player2Team2 === userId) {
-            dataObj[dateString].points = match.Player2Team2Points;
+          if (dateString in dataObj) {
+            dataObj[dateString].matches = ++dataObj[dateString].matches;
+            if (match.player1Team1 === userId) {
+              dataObj[dateString].points += match.Player1Team1Points;
+            } else if (match.player2Team1 === userId) {
+              dataObj[dateString].points += match.Player2Team1Points;
+            } else if ((match.player1Team2 === userId)) {
+              dataObj[dateString].points += match.Player1Team2Points;
+            } else if (match.player2Team2 === userId) {
+              dataObj[dateString].points += match.Player2Team2Points;
+            }
+          } else {
+            dataObj[dateString] = {
+              matches: 1,
+              points: 0
+            };
+            if (match.player1Team1 === userId) {
+              dataObj[dateString].points = match.Player1Team1Points;
+            } else if (match.player2Team1 === userId) {
+              dataObj[dateString].points = match.Player2Team1Points;
+            } else if ((match.player1Team2 === userId)) {
+              dataObj[dateString].points = match.Player1Team2Points;
+            } else if (match.player2Team2 === userId) {
+              dataObj[dateString].points = match.Player2Team2Points;
+            }
           }
         }
       }
 
+      return dataObj;
     }
 
-    return dataObj;
+    return null;
   }
 
   getPlayerMatches(userId: string, limit: number = 0) {

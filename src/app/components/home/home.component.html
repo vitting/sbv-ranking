@@ -1,3 +1,12 @@
+<div class="ranking-filter">
+  <div class="ranking-filter-container">
+    <mat-radio-group aria-label="Vælg en mulighed" [value]="filterMode" (change)="filterChange($event)">
+        <mat-radio-button value="a">Alle</mat-radio-button>
+      <mat-radio-button value="f">Kvinder</mat-radio-button>
+      <mat-radio-button value="m">Mænd</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
 <div role="table" class="ranking-container">
   <div role="row" class="ranking-row" *ngFor="let user of rankingUsers$ | async; let i=index">
     <div class="ranking-details">
@@ -5,7 +14,7 @@
         <div class="profile-image"><img [src]="user.id | profilePicOfUser"></div>
       </div>
       <div role="cell" class="ranking-position">{{i+1}}.</div>
-      <div role="cell" class="ranking-name">{{user.id | nameOfUser}}</div>
+      <div role="cell" class="ranking-name" [ngClass]="{'selected': user.id === userId}">{{user.id | nameOfUser}}</div>
     </div>
     <div class="ranking-button">
       <span role="cell" class="ranking-points">{{user.seasons[currentYear].points}}</span>

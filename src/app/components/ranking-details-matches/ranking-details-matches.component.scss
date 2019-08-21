@@ -2,8 +2,7 @@
 
 .matches {
   font-size: 0.9rem;
-  color: $color-text-inverse;
-  text-shadow: 1px 1px 2px #000;
+  // text-shadow: 1px 1px 2px #000;
 
   .match-row {
     padding: 3px 0;
@@ -21,7 +20,7 @@
         padding: 5px 0;
         text-align: center;
         width: 100%;
-
+        background-color: $amber-50;
         &.winner {
           border-right: 1px solid $border-color-divider;
         }
@@ -32,6 +31,7 @@
       display: flex;
       justify-content: space-between;
       background-color: $amber-900;
+      color: $color-text-inverse;
       padding: 5px 10px;
     }
 
@@ -74,12 +74,4 @@
       }
     }
   }
-}
-
-.winner {
-  background-color: $gold-color;
-}
-
-.loser {
-  background-color: $silver-color;
 }

@@ -53,7 +53,6 @@ import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/materia
 import { ChoseUserComponent } from './components/register-match/choose-user/choose-user.component';
 import { ChooseUserItemComponent } from './components/register-match/choose-user/choose-user-item/choose-user-item.component';
 import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
-import { LastMatchesComponent } from './components/last-matches/last-matches.component';
 import { NameOfUserPipe } from './components/shared/pipes/name-of-user.pipe';
 import { ProfilePicOfUserPipe } from './components/shared/pipes/profile-pic-of-user.pipe';
 import { RankingDetailsMatchesComponent } from './components/ranking-details-matches/ranking-details-matches.component';
@@ -86,7 +85,6 @@ export const DATEPICKER_FORMATS = {
     ChoseUserComponent,
     ChooseUserItemComponent,
     ErrorMessageComponent,
-    LastMatchesComponent,
     RankingDetailsMatchesComponent
   ],
   imports: [

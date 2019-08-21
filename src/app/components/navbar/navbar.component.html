@@ -1,26 +1,34 @@
 <nav class="navbar-container">
   <div class="navbar-brand">
-    <button mat-icon-button class="app-button-outline" (click)="gotoHome()"><img src="assets/images/sbv_logo_250x250.png"
-        alt="Logo"></button>
+    <button mat-icon-button class="app-button-outline" (click)="gotoHome()"><img
+        src="assets/images/sbv_logo_250x250.png" alt="Logo"></button>
   </div>
   <div class="navbar-title">
     {{title}}
   </div>
-  <div class="navbar-menu">
+  <div class="navbar-menu" *ngIf="user">
     <button mat-icon-button class="app-button-outline" [matMenuTriggerFor]="menu" aria-label="menu">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
+  <div class="navbar-menu-placeholder" *ngIf="!user"></div>
 </nav>
 <div class="navbar-progress">
   <mat-progress-bar *ngIf="showProgressbar" mode="indeterminate" color="warn"></mat-progress-bar>
 </div>
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <div mat-menu-item [disableRipple]="true" [disabled]="true">
-    <span>Christian Nicolaisen</span>
+  <div class="user-info noselect" *ngIf="user">
+    <span class="user-profile"><img [src]="profileSrc"></span>
+    <span class="user-name">{{user?.name}}</span>
   </div>
   <button mat-menu-item (click)="menuItemClick('home')" class="app-button-outline">
-    <span>Forside</span>
+    <span>Ranglisten</span>
+  </button>
+  <button mat-menu-item (click)="menuItemClick('settings')" class="app-button-outline">
+      <span>Indstillinger</span>
+    </button>
+  <button mat-menu-item (click)="menuItemClick('logout')" class="app-button-outline">
+    <span>Log ud</span>
   </button>
 </mat-menu>

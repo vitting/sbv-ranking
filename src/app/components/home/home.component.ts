@@ -5,6 +5,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MatRadioChange } from '@angular/material/radio';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,8 @@ import { UtilityService } from 'src/app/services/utility.service';
 export class HomeComponent implements OnInit {
   currentYear = 0;
   rankingUsers$: Observable<User[]>;
+  userId = "";
+  filterMode = "a";
   dataSource = [
     { name: "Christian Vitting Jensen Hansen Nicolaisen", points: 122 },
     { name: "Christian Nicolaisen", points: 120 },
@@ -24,13 +28,19 @@ export class HomeComponent implements OnInit {
     private navbarService: NavbarService,
     private router: Router,
     private utilityService: UtilityService,
+    private authService: AuthService,
     private firestoreService: FirestoreService) {
       this.currentYear = this.utilityService.currentYear;
     }
 
   ngOnInit() {
     this.navbarService.navbarTitle = "Ranglisten";
-    this.rankingUsers$ = this.firestoreService.getRanking();
+    this.userId = this.authService.userId;
+    this.getRanking(this.filterMode);
+  }
+
+  private getRanking(mode: string = "a") {
+    this.rankingUsers$ = this.firestoreService.getRanking(mode);
   }
 
   addMatchClicked() {
@@ -43,5 +53,9 @@ export class HomeComponent implements OnInit {
         p: position
       }
     });
+  }
+
+  filterChange({value}: MatRadioChange) {
+    this.getRanking(value);
   }
 }

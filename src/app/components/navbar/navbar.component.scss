@@ -13,8 +13,28 @@
       height: 30px;
     }
   }
+}
 
-  .navbar-title {
+.user-info {
+  @include flex-row-spacebetween-center;
+  padding: 10px;
+  .user-profile {
+    @include profile-pic-box-shadow;
+    background-color: $bg-color-no-profile;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 
+  .user-name {
+    font-size: 0.9rem;
+    color: $color-text-dimmed;
   }
 }

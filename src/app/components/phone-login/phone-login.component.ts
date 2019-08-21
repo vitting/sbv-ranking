@@ -66,9 +66,9 @@ export class PhoneLoginComponent implements OnInit {
       try {
         const result = await this.authService.verifyCode(code.toString());
         if (result.additionalUserInfo.isNewUser) {
-          // this.router.navigate(["/signup"]);
+          this.router.navigate(["/profile"]);
         } else {
-          // this.router.navigate(["/"]);
+          this.router.navigate(["/"]);
         }
         console.log(result);
       } catch (error) {
@@ -79,7 +79,7 @@ export class PhoneLoginComponent implements OnInit {
     }
   }
 
-  logout() {
+  test() {
     this.authService.logout();
   }
 }

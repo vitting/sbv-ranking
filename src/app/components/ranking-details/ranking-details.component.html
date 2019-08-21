@@ -1,4 +1,3 @@
-<h1>Vis datoer vs weeks</h1>
 <div class="container">
   <div class="user-info">
     <div class="image">
@@ -31,9 +30,14 @@
       </div>
     </div>
   </div>
+  <button class="player-matches" mat-flat-button color="primary" (click)="showMatches()" *ngIf="matchesTotal">Vis spillede kampe</button>
+  <div class="chart-filter" *ngIf="matchesTotal">
+    <mat-radio-group aria-label="Vælg en mulighed" [value]="chartMode" (change)="chartFilterChange($event)">
+      <mat-radio-button value="w">Uger</mat-radio-button>
+      <mat-radio-button value="d">Dage</mat-radio-button>
+    </mat-radio-group>
+  </div>
   <div class="charts">
     <canvas id="canvas"></canvas>
   </div>
-  <button mat-raised-button (click)="showMatches()">Vis kampe</button>
-  <button mat-raised-button (click)="test()">TEST</button>
 </div>

@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { SplashService } from './splash.service';
 import { User } from '../models/user.model';
-import { Subscription, of } from 'rxjs';
+import { Subscription, of, Subject, BehaviorSubject, ReplaySubject } from 'rxjs';
 import { FirestoreService } from './firestore.service';
 import { catchError } from 'rxjs/operators';
 import { UtilityService } from './utility.service';
@@ -18,6 +18,7 @@ export class AuthService {
   private confirmResult: firebase.auth.ConfirmationResult;
   private usersIndex: { [key: string]: User } = {};
   private users: User[] = [];
+  private authChange = new BehaviorSubject<firebase.User>(null);
   private usersSub: Subscription;
   constructor(
     private fAuth: AngularFireAuth,
@@ -35,13 +36,14 @@ export class AuthService {
         this.usersIndex = {};
         console.log("NO USER");
       }
+      this.emitAuthChange(user);
       this.splashService.showSplashScreen = false;
     });
   }
 
   private async checkIfUserHasCurrentStat(): Promise<null> {
     const year = this.utilityService.currentYear;
-    if (!(year in this.usersIndex[this.userId].seasons)) {
+    if (this.usersIndex[this.userId] && !(year in this.usersIndex[this.userId].seasons)) {
       const result = await this.firestoreService.addStatToUser(this.usersIndex[this.userId]);
     }
 
@@ -58,6 +60,7 @@ export class AuthService {
         return of([]);
       })).subscribe((users: User[]) => {
         this.users = users;
+
         for (const user of users) {
           this.usersIndex[user.id] = user;
         }
@@ -105,5 +108,13 @@ export class AuthService {
 
   getUsersAsArray() {
     return this.users;
+  }
+
+  private emitAuthChange(authUser: firebase.User) {
+    this.authChange.next(authUser);
+  }
+
+  get authChange$() {
+    return this.authChange;
   }
 }

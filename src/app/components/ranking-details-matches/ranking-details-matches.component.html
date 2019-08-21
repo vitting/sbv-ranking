@@ -3,7 +3,7 @@
       <div class="match-details">
         <div>
           <fa-icon [icon]="['far', 'calendar']" class="app-icon"></fa-icon>
-          {{match.matchDate.toDate() | amLocal:'da' | amDateFormat: 'DD-MM-YYYY'}}
+          <span>{{match.matchDate?.toDate() | amLocale:'da' | amDateFormat: 'DD-MM-YYYY'}}</span>
         </div>
         <div>
           <fa-icon [icon]="['fas', 'user']" class="app-icon"></fa-icon>{{match.createdBy | nameOfUser}}
