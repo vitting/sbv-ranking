@@ -3,71 +3,73 @@
 .matches {
   font-size: 0.9rem;
   // text-shadow: 1px 1px 2px #000;
-
   .match-row {
-    padding: 3px 0;
+    background-color: $amber-900;
+    margin-bottom: 10px;
+    .match-row-container {
+      padding: 0px 5px;
+      &:first-child {
+        padding-top: 0;
+      }
 
-    &:first-child {
-      padding-top: 0;
-    }
+      .match-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $border-color-divider;
 
-    .match-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid $border-color-divider;
-
-      .match-player-points {
-        padding: 5px 0;
-        text-align: center;
-        width: 100%;
-        background-color: $amber-50;
-        &.winner {
-          border-right: 1px solid $border-color-divider;
+        .match-player-points {
+          padding: 2px 0;
+          text-align: center;
+          width: 100%;
+          background-color: $amber-50;
+          &.winner {
+            border-right: 1px solid $border-color-divider;
+          }
         }
       }
-    }
 
-    .match-details {
-      display: flex;
-      justify-content: space-between;
-      background-color: $amber-900;
-      color: $color-text-inverse;
-      padding: 5px 10px;
-    }
-
-    .match-players {
-      display: flex;
-      justify-content: space-between;
-
-      .match-team1 {
-        border-right: 1px solid $border-color-divider;
+      .match-details {
+        display: flex;
+        justify-content: space-between;
+        background-color: $amber-900;
+        color: $color-text-inverse;
+        padding: 5px 10px;
       }
 
-      .match-team1,
-      .match-team2 {
-        flex: 1;
-        padding: 10px;
+      .match-players {
+        display: flex;
+        justify-content: space-between;
+        color: $color-text-inverse;
+        .match-team1 {
+          border-right: 1px solid $border-color-divider;
+        }
 
-        .match-profile {
-          display: flex;
-          align-items: center;
-          padding: 5px 0;
+        .match-team1,
+        .match-team2 {
+          flex: 1;
+          padding: 10px;
 
-          .profile-image {
-            @include profile-pic-box-shadow;
-            flex-shrink: 0;
-            width: 100%;
-            margin-right: 10px;
-            display: inline-block;
-            overflow: hidden;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            background-color: $bg-color-no-profile;
+          .match-profile {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
 
-            img {
+            .profile-image {
+              @include profile-pic-box-shadow;
+              flex-shrink: 0;
+              width: 100%;
+              margin-right: 10px;
+              display: inline-block;
+              overflow: hidden;
+              border-radius: 50%;
               width: 40px;
               height: 40px;
+              background-color: $bg-color-no-profile;
+
+              img {
+                width: 40px;
+                height: 40px;
+              }
             }
           }
         }
