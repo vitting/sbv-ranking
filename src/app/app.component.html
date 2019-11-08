@@ -2,7 +2,11 @@
 <div *ngIf="!showSplash" class="main-container">
   <app-navbar></app-navbar>
   <app-error-message></app-error-message>
-  <div class="content" [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <!-- TODO: Problems with fade animation -->
+  <!-- <div class="content" [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+  </div> -->
+  <div class="content">
     <router-outlet #o="outlet"></router-outlet>
   </div>
 </div>
