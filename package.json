@@ -43,7 +43,7 @@
   "devDependencies": {
     "@angular-devkit/architect": "^0.803.21",
     "@angular-devkit/build-angular": "^0.803.21",
-    "@angular/cli": "^8.3.20",
+    "@angular/cli": "^8.3.21",
     "@angular/compiler-cli": "~9.0.0-next.2",
     "@angular/language-service": "~9.0.0-next.2",
     "@types/chart.js": "^2.8.11",
