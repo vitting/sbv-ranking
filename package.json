@@ -38,7 +38,7 @@
     "reboot.css": "^1.0.4",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.803.22",
@@ -62,7 +62,7 @@
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^2.1.1",
     "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.0",
+    "karma-jasmine-html-reporter": "^1.5.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "^5.20.1",
